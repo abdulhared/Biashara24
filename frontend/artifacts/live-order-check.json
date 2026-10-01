@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "realBrowserSubmission": true,
+  "persistedAfterReload": true,
+  "orderId": 1,
+  "orderNumber": "B261001-F2EDE3",
+  "total": 116,
+  "includedTax": 16,
+  "kitchenReceived": true,
+  "readyNotification": true,
+  "cashierSettlement": true,
+  "change": 84,
+  "tableReleased": true,
+  "businessDatabaseTouched": false
+}

@@ -1,0 +1,12 @@
+import {useState} from 'react';
+import {http} from '../services/http';
+import {useLive,LiveState} from './WaiterWorkspace';
+import {Panel,Field,money} from './LiveUI';
+import {BillTransfer} from './RestaurantOperations';
+export default function BillManagement({page}){
+ const tables=page==='tables',query=useLive(tables?'/api/tables':'/api/order-change-requests');
+ const [number,setNumber]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false);
+ async function run(fn){setBusy(true);setError('');try{await fn();setNumber('')}catch(e){setError(e.message)}finally{setBusy(false);query.reload()}}
+ return <><h1>{tables?'Table configuration':'Bill change approvals'}</h1><LiveState query={query}/>{error&&<p role="alert">{error}</p>}{tables&&<BillTransfer/>}
+ {tables?<><Panel title="Add a table"><form onSubmit={e=>{e.preventDefault();run(()=>http.post('/api/tables',{number:Number(number)}))}}><Field label="Table number"><input type="number" min="1" max="9999" required value={number} onChange={e=>setNumber(e.target.value)}/></Field><button className="btn primary" disabled={busy}>Add table</button></form></Panel><div className="table-picker">{query.data?.map(t=><Panel key={t.id} title={'Table '+t.number}><p>{t.occupied?'Occupied · '+t.owner:t.is_active?'Available':'Inactive'}</p><button className="btn" disabled={busy||t.occupied} onClick={()=>run(()=>http.put('/api/tables/'+t.id,{is_active:!t.is_active}))}>{t.is_active?'Deactivate':'Activate'}</button></Panel>)}</div></>:<>{query.data?.length===0&&<p>No requests awaiting review.</p>}{query.data?.map(r=><Panel key={r.id} title={r.order.order_number+' · '+(r.order.table_number?'Table '+r.order.table_number:'Unassigned')}><p>{r.order.waiter} · {r.kind==='cancel'?'Cancel entire bill':'Reduce quantities'}</p><p>Reason: {r.reason}</p><ul>{(r.kind==='cancel'?r.order.items.filter(i=>i.quantity>0).map(i=>({order_item_id:i.id,quantity:i.quantity})):r.items).map(i=><li key={i.order_item_id}>Remove {i.quantity} × {r.order.items.find(line=>line.id===i.order_item_id)?.name}</li>)}</ul><p>Current total: {money(r.order.total)} · Resulting total: {money(r.resulting_total)}</p><div className="live-actions">{['approved','rejected'].map(decision=><button className="btn" key={decision} disabled={busy} onClick={()=>run(()=>http.put('/api/order-change-requests/'+r.id,{expected_version:r.order.version,decision}))}>{decision==='approved'?'Approve change':'Reject change'}</button>)}</div></Panel>)}</>}</>;
+}

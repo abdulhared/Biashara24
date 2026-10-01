@@ -1,0 +1,35 @@
+"""Live reports remain authoritative; snapshots and audit history are persisted."""
+from datetime import date, datetime
+from sqlalchemy import Date, DateTime, Float, ForeignKey, Integer, JSON, String
+from sqlalchemy.orm import Mapped, mapped_column
+from ..database import Base
+from .user import now
+
+class DailySummary(Base):
+    __tablename__ = "daily_summaries"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    summary_date: Mapped[date] = mapped_column(Date, unique=True)
+    restaurant_orders_count: Mapped[int] = mapped_column(Integer, default=0)
+    restaurant_revenue: Mapped[float] = mapped_column(Float, default=0)
+    restaurant_cash: Mapped[float] = mapped_column(Float, default=0)
+    restaurant_mpesa: Mapped[float] = mapped_column(Float, default=0)
+    carwash_count: Mapped[int] = mapped_column(Integer, default=0)
+    carwash_revenue: Mapped[float] = mapped_column(Float, default=0)
+    carwash_cash: Mapped[float] = mapped_column(Float, default=0)
+    carwash_mpesa: Mapped[float] = mapped_column(Float, default=0)
+    low_stock_items: Mapped[int] = mapped_column(Integer, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=now)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=now, onupdate=now)
+
+class AuditLog(Base):
+    __tablename__ = "audit_logs"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
+    action: Mapped[str] = mapped_column(String(80))
+    module: Mapped[str] = mapped_column(String(50))
+    entity_type: Mapped[str] = mapped_column(String(50))
+    entity_id: Mapped[int] = mapped_column(Integer)
+    old_values: Mapped[dict | None] = mapped_column(JSON)
+    new_values: Mapped[dict | None] = mapped_column(JSON)
+    ip_address: Mapped[str | None] = mapped_column(String(80))
+    timestamp: Mapped[datetime] = mapped_column(DateTime, default=now, index=True)

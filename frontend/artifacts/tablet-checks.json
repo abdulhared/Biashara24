@@ -1,0 +1,1609 @@
+[
+  {
+    "label": "landscape",
+    "width": 1180,
+    "horizontalOverflow": false,
+    "sidebarOverflow": false,
+    "navOverflow": false,
+    "sidebarOverflowStyle": "visible",
+    "columns": 2,
+    "minTouchHeight": 48,
+    "links": [
+      "My bills",
+      "New order",
+      "History",
+      "Food pickup",
+      "Notifications"
+    ]
+  },
+  {
+    "label": "portrait",
+    "width": 820,
+    "horizontalOverflow": false,
+    "sidebarOverflow": false,
+    "navOverflow": false,
+    "sidebarOverflowStyle": "visible",
+    "columns": 1,
+    "minTouchHeight": 48,
+    "links": [
+      "My bills",
+      "New order",
+      "History",
+      "Food pickup",
+      "Notifications"
+    ]
+  },
+  {
+    "width": 1180,
+    "horizontalOverflow": false,
+    "images": 6,
+    "photosFit": true,
+    "cartFits": true
+  },
+  {
+    "width": 820,
+    "horizontalOverflow": false,
+    "images": 6,
+    "photosFit": true,
+    "cartFits": true
+  },
+  {
+    "width": 390,
+    "horizontalOverflow": false,
+    "images": 6,
+    "photosFit": true,
+    "cartFits": true
+  },
+  {
+    "width": 1180,
+    "managerMenu": true,
+    "horizontalOverflow": false,
+    "taxPreview": "Before VAT KES 100VAT (16%, included) KES 16",
+    "description": "Spiced rice with chicken."
+  },
+  {
+    "width": 390,
+    "managerMenu": true,
+    "horizontalOverflow": false,
+    "taxPreview": "Before VAT KES 100VAT (16%, included) KES 16",
+    "description": "Spiced rice with chicken."
+  },
+  {
+    "width": 1536,
+    "managerDashboard": true,
+    "horizontalOverflow": false,
+    "tickets": 4,
+    "stages": 4,
+    "metrics": 4,
+    "sidebarWidth": 210,
+    "sidebarBackground": "linear-gradient(120deg, rgb(9, 47, 38), rgb(6, 36, 30))",
+    "headingSize": "26px",
+    "metricHeight": 93.5,
+    "dashboardHeight": 637.875,
+    "createForm": false,
+    "links": [
+      "Manager Dashboard",
+      "Orders",
+      "Menu",
+      "Staff",
+      "Printers",
+      "Reports"
+    ]
+  },
+  {
+    "width": 1366,
+    "managerDashboard": true,
+    "horizontalOverflow": false,
+    "tickets": 4,
+    "stages": 4,
+    "metrics": 4,
+    "sidebarWidth": 210,
+    "sidebarBackground": "linear-gradient(120deg, rgb(9, 47, 38), rgb(6, 36, 30))",
+    "headingSize": "26px",
+    "metricHeight": 93.5,
+    "dashboardHeight": 654.375,
+    "createForm": false,
+    "links": [
+      "Manager Dashboard",
+      "Orders",
+      "Menu",
+      "Staff",
+      "Printers",
+      "Reports"
+    ]
+  },
+  {
+    "width": 390,
+    "managerDashboard": true,
+    "horizontalOverflow": false,
+    "tickets": 4,
+    "stages": 4,
+    "metrics": 4,
+    "sidebarWidth": 246,
+    "sidebarBackground": "linear-gradient(120deg, rgb(9, 47, 38), rgb(6, 36, 30))",
+    "headingSize": "23px",
+    "metricHeight": 100.59375,
+    "dashboardHeight": 1543.4375,
+    "createForm": false,
+    "links": [
+      "Manager Dashboard",
+      "Orders",
+      "Menu",
+      "Staff",
+      "Printers",
+      "Reports"
+    ]
+  },
+  {
+    "path": "/",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "One business.Many moving parts.All together.",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/login",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Where do you work?",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/login/manager",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "A good daystarts here.",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/overview",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Good morning, Director",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/reports",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/management",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Staff accounts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/departments",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Departments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/menu",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Food menu",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/tables",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Table configuration",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/bill-changes",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Bill change approvals",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/printers",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Printer Management",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/order-pipeline",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Order Pipeline",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/checkout",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Cashier Station",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/payment-ledger",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/store-overview",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Store & Inventory",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/stock-history",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-overview",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Manager",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/service-types",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Wash Services",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/bills",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "My open bills",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/history",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/kitchen/kitchen",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Kitchen Operations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/orders",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Orders",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/payments",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/inventory",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Store & Inventory",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/car-wash",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Manager",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/branches",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Branches",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/audit",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Audit History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/notifications",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Notifications",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/settings",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Business Settings",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/kitchen",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Kitchen Operations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/reorder",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/recipes",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Recipes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/suppliers",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Suppliers",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/deliveries",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/stock-counts",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Counts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/reconciliation",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/refunds",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Refunds & Credit Notes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/printer-recovery",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Printer Recovery",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/tables",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Table configuration",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/bill-changes",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Bill change approvals",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/menu",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Food menu",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/categories",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Categories",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/printers",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Printer Management",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/bay-config",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Wash Bays",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/service-types",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Wash Services",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-dashboard",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Operations Manager",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/kitchen",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Kitchen Operations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/staff",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Staff Management",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/departments",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Departments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-reports",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-notifications",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Notifications",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/reorder",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/recipes",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Recipes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/suppliers",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Suppliers",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/deliveries",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/stock-counts",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Counts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/reconciliation",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/refunds",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Refunds & Credit Notes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/printer-recovery",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Printer Recovery",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/settings",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Business Settings",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/categories",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Categories",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-payments",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/pending-bills",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Cashier Station",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/cash-payment",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Cash payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/mpesa",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "M-Pesa confirmations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/receipts",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Receipts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/reconciliation",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/cashier-carwash",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/shift-summary",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/ingredients",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Ingredients",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/receive-stock",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Receive Stock",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/adjustments",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Adjustments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/recipes",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Recipes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/suppliers",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Suppliers",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/deliveries",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/stock-counts",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Counts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/low-stock",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Low Stock",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/reorder",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/inventory-reports",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Inventory Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/new-order",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "New order",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/food-pickup",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Food pickup",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/notifications",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Notifications",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/orders",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "My open bills",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/active-bays",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Active Bays",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/new-wash",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "New Car Wash",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-payments",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/attendants",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Staff & Attendants",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-history",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Car Wash History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/pending-wash-payments",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Pending Wash Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-summary",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Daily Wash Summary",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-reports",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/bay-config",
+    "width": 1366,
+    "horizontalOverflow": false,
+    "heading": "Wash Bays",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "One business.Many moving parts.All together.",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/login",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Where do you work?",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/login/manager",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "A good daystarts here.",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/overview",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Good morning, Director",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/reports",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/management",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Staff accounts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/departments",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Departments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/menu",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Food menu",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/tables",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Table configuration",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/bill-changes",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Bill change approvals",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/printers",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Printer Management",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/order-pipeline",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Order Pipeline",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/checkout",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Cashier Station",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/payment-ledger",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/store-overview",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Store & Inventory",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/stock-history",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-overview",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Manager",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/service-types",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Wash Services",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/bills",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "My open bills",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/history",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/kitchen/kitchen",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Kitchen Operations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/orders",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Orders",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/payments",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/inventory",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Store & Inventory",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/car-wash",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Manager",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/branches",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Branches",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/audit",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Audit History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/notifications",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Notifications",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/settings",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Business Settings",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/kitchen",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Kitchen Operations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/reorder",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/recipes",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Recipes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/suppliers",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Suppliers",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/deliveries",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/stock-counts",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Counts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/reconciliation",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/refunds",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Refunds & Credit Notes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/printer-recovery",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Printer Recovery",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/tables",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Table configuration",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/bill-changes",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Bill change approvals",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/menu",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Food menu",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/categories",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Categories",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/printers",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Printer Management",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/bay-config",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Wash Bays",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/director/service-types",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Wash Services",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-dashboard",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Operations Manager",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/kitchen",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Kitchen Operations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/staff",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Staff Management",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/departments",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Departments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-reports",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-notifications",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Notifications",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/reorder",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/recipes",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Recipes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/suppliers",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Suppliers",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/deliveries",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/stock-counts",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Counts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/reconciliation",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/refunds",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Refunds & Credit Notes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/printer-recovery",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Printer Recovery",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/settings",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Business Settings",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/categories",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Categories",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/manager/manager-payments",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/pending-bills",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Cashier Station",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/cash-payment",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Cash payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/mpesa",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "M-Pesa confirmations",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/receipts",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Receipts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/reconciliation",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/cashier-carwash",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/cashier/shift-summary",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Cashier Shifts & Reconciliation",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/ingredients",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Ingredients",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/receive-stock",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Receive Stock",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/adjustments",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Adjustments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/recipes",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Recipes",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/suppliers",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Suppliers",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/deliveries",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/stock-counts",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Counts",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/low-stock",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Low Stock",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/reorder",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Stock Documents",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/store_manager/inventory-reports",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Inventory Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/new-order",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "New order",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/food-pickup",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Food pickup",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/notifications",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Notifications",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/waiter/orders",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "My open bills",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/active-bays",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Active Bays",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/new-wash",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "New Car Wash",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-payments",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/attendants",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Staff & Attendants",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-history",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Car Wash History",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/pending-wash-payments",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Pending Wash Payments",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-summary",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Daily Wash Summary",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/wash-reports",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Car Wash Reports",
+    "placeholder": false,
+    "sidebarOverflow": false
+  },
+  {
+    "path": "/carwash_manager/bay-config",
+    "width": 390,
+    "horizontalOverflow": false,
+    "heading": "Wash Bays",
+    "placeholder": false,
+    "sidebarOverflow": false
+  }
+]

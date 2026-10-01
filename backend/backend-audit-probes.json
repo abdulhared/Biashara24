@@ -1,0 +1,24 @@
+{
+  "historical_name_changes": {
+    "before": "Meal 14b85e61",
+    "after": "Renamed audit dish",
+    "batch_name": "Meal 14b85e61"
+  },
+  "stock_retry": {
+    "first_balance": 5.0,
+    "retry_balance": 10.0
+  },
+  "pending_payment": {
+    "payment_status": "pending",
+    "bill_locked": true,
+    "cancel_payment_endpoint_status": 404
+  },
+  "invalid_image_with_png_signature": {
+    "status": 201
+  },
+  "duplicate_wash_reference_and_bay": {
+    "first_status": 201,
+    "second_status": 201,
+    "same_reference_as_restaurant": true
+  }
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "label": "landscape",
+    "width": 1180,
+    "horizontalOverflow": false,
+    "sidebarOverflow": false,
+    "navOverflow": false,
+    "sidebarOverflowStyle": "visible",
+    "columns": 2,
+    "minTouchHeight": 48,
+    "links": [
+      "My bills",
+      "New order",
+      "History"
+    ]
+  },
+  {
+    "label": "portrait",
+    "width": 820,
+    "horizontalOverflow": false,
+    "sidebarOverflow": false,
+    "navOverflow": false,
+    "sidebarOverflowStyle": "visible",
+    "columns": 1,
+    "minTouchHeight": 48,
+    "links": [
+      "My bills",
+      "New order",
+      "History"
+    ]
+  },
+  {
+    "width": 1180,
+    "horizontalOverflow": false,
+    "images": 6,
+    "photosFit": true,
+    "cartFits": true
+  },
+  {
+    "width": 820,
+    "horizontalOverflow": false,
+    "images": 6,
+    "photosFit": true,
+    "cartFits": true
+  },
+  {
+    "width": 390,
+    "horizontalOverflow": false,
+    "images": 6,
+    "photosFit": true,
+    "cartFits": true
+  },
+  {
+    "width": 1180,
+    "managerMenu": true,
+    "horizontalOverflow": false,
+    "taxPreview": "Before VAT KES 100VAT (16%, included) KES 16",
+    "description": "Spiced rice with chicken."
+  },
+  {
+    "width": 390,
+    "managerMenu": true,
+    "horizontalOverflow": false,
+    "taxPreview": "Before VAT KES 100VAT (16%, included) KES 16",
+    "description": "Spiced rice with chicken."
+  },
+  {
+    "width": 1536,
+    "managerDashboard": true,
+    "horizontalOverflow": false,
+    "tickets": 4,
+    "stages": 4,
+    "metrics": 4,
+    "sidebarWidth": 210,
+    "headingSize": "27px",
+    "metricHeight": 93.5,
+    "dashboardHeight": 625.765625,
+    "createForm": false,
+    "links": [
+      "Manager Dashboard",
+      "Orders",
+      "Menu",
+      "Staff",
+      "Printers",
+      "Reports"
+    ]
+  },
+  {
+    "width": 1366,
+    "managerDashboard": true,
+    "horizontalOverflow": false,
+    "tickets": 4,
+    "stages": 4,
+    "metrics": 4,
+    "sidebarWidth": 210,
+    "headingSize": "27px",
+    "metricHeight": 93.5,
+    "dashboardHeight": 642.265625,
+    "createForm": false,
+    "links": [
+      "Manager Dashboard",
+      "Orders",
+      "Menu",
+      "Staff",
+      "Printers",
+      "Reports"
+    ]
+  },
+  {
+    "width": 390,
+    "managerDashboard": true,
+    "horizontalOverflow": false,
+    "tickets": 4,
+    "stages": 4,
+    "metrics": 4,
+    "sidebarWidth": 246,
+    "headingSize": "23px",
+    "metricHeight": 100.59375,
+    "dashboardHeight": 1534.28125,
+    "createForm": false,
+    "links": [
+      "Manager Dashboard",
+      "Orders",
+      "Menu",
+      "Staff",
+      "Printers",
+      "Reports"
+    ]
+  }
+]

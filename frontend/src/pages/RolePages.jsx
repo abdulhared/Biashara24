@@ -1,0 +1,42 @@
+import {Orders,Payments} from './LiveOrders';
+import {Inventory,Carwash} from './LiveStockWash';
+import {Overview,Reports} from './LiveReports';
+import {Configuration} from './LiveConfiguration';
+import {PageHeader,Panel} from './LiveUI';
+import {useAuth} from '../auth/AuthContext';
+import {useLocation} from 'react-router-dom';
+import WaiterWorkspace from './WaiterWorkspace';
+import BillManagement from './BillManagement';
+import ManagerDashboard from './ManagerDashboard';
+import OrderBoard from './OrderBoard';
+import PreviewWorkspace,{Notifications,previewModules} from './PreviewWorkspace';
+import {KitchenOperations,LiveNotifications,Recipes,Suppliers,StockDocuments,CashOffice,Refunds,BusinessSettings,PrinterRecovery} from './RestaurantOperations';
+
+export default function RolePage({id}){
+ const {user}=useAuth();const location=useLocation();
+ if(['kitchen','food-pickup'].includes(id))return <KitchenOperations/>;
+ if(['notifications','manager-notifications'].includes(id))return <LiveNotifications/>;
+ if(id==='recipes')return <Recipes/>;
+ if(id==='suppliers')return <Suppliers/>;
+ if(['deliveries','stock-counts','reorder'].includes(id))return <StockDocuments page={id}/>;
+ if(['reconciliation','shift-summary'].includes(id))return <CashOffice/>;
+ if(id==='refunds')return <Refunds/>;
+ if(id==='settings')return <BusinessSettings/>;
+ if(id==='printer-recovery')return <PrinterRecovery/>;
+ if(user.role==='waiter')return <WaiterWorkspace key={location.pathname+location.search} page={id==='orders'?'bills':id}/>;
+ if(['tables','bill-changes'].includes(id))return <BillManagement page={id}/>;
+ if(['notifications','manager-notifications'].includes(id))return <Notifications/>;
+ if(previewModules[id])return <PreviewWorkspace key={id} page={id}/>;
+ if(['order-pipeline','kitchen'].includes(id))return <OrderBoard kitchen={id==='kitchen'}/>;
+ if(id==='overview')return <Overview/>;
+ if(id==='manager-dashboard')return <ManagerDashboard/>;
+ if(['orders','order-pipeline','kitchen'].includes(id))return <Orders title={id==='kitchen'?'Kitchen Operations':'Orders'}/>;
+ if(['checkout','pending-bills'].includes(id))return <Orders title="Cashier Station" checkout pendingOnly/>;
+ if(['payments','manager-payments','payment-ledger','cash-payment','mpesa','receipts','shift-summary'].includes(id))return <Payments page={id}/>;
+ if(['inventory','store-overview','ingredients','receive-stock','adjustments','low-stock','stock-counts','inventory-reports','stock-history'].includes(id))return <Inventory page={id} historyOnly={id==='stock-history'}/>;
+ if(['car-wash','wash-overview','new-wash','wash-payments','cashier-carwash','wash-history','pending-wash-payments','wash-summary','wash-reports','active-bays'].includes(id))return <Carwash page={id}/>;
+ if(['reports','manager-reports'].includes(id))return <Reports/>;
+ const config={menu:['menu','Menu Management'],management:['users','Staff accounts'],staff:['users','Staff Management'],departments:['departments','Departments'],categories:['categories','Categories'],printers:['printers','Printer Management'],'bay-config':['bays','Wash Bays'],'service-types':['services','Wash Services'],audit:['audits','Audit History']}[id];
+ if(config)return <Configuration resource={config[0]} title={config[1]}/>;
+ return <><PageHeader title="Not yet available" action={null}/><Panel title="This module has not been implemented"><p>Use the operational pages for orders, payments, stock, car wash and reports. No records are saved from this page.</p></Panel></>;
+}
