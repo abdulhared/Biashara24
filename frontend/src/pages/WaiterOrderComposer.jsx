@@ -3,6 +3,7 @@ import {Link,useNavigate} from 'react-router-dom';
 import {Search,ShoppingBag,UtensilsCrossed,Plus,Minus,X,ArrowLeft,Check} from 'lucide-react';
 import {money,Field} from './LiveUI';
 import FoodPhoto from '../components/FoodPhoto';
+import {productImage} from '../services/productImages';
 import TaxSummary,{estimateTax} from '../components/TaxSummary';
 
 export default function WaiterOrderComposer({bill,billId,user,tables,menu,draft,update,change,busy,error,submit,LiveState}){
@@ -12,7 +13,7 @@ export default function WaiterOrderComposer({bill,billId,user,tables,menu,draft,
  const selectedTable=tables.data?.find(t=>t.id===Number(draft.table_id));
  const tableNumber=billId?bill?.table_number:selectedTable?.number;
  const tableLabel=tableNumber?'Table '+tableNumber:billId?'Unassigned':'Choose a table';
- const cart=draft.items.map(i=>({...i,menu:menu.data?.find(m=>m.id===i.menu_item_id)}));
+ const cart=draft.items.map(i=>({...i,menu:(()=>{const item=menu.data?.find(m=>m.id===i.menu_item_id);return item?{...item,image:productImage(item)}:undefined})()}));
  const count=cart.reduce((n,i)=>n+i.quantity,0);
  const subtotal=cart.reduce((n,i)=>n+(i.menu?.price||0)*i.quantity,0);
  const total=subtotal+(billId?bill?.total||0:0);
@@ -37,7 +38,7 @@ export default function WaiterOrderComposer({bill,billId,user,tables,menu,draft,
   :cart.some(i=>!Number.isInteger(i.quantity)||i.quantity<1||i.quantity>100)?'Item quantities must be whole numbers from 1 to 100.'
   :'';
  const valid=!reviewBlock;
- const visible=(menu.data||[]).filter(m=>(!category||m.category===category)&&m.name.toLowerCase().includes(search.toLowerCase()));
+ const visible=(menu.data||[]).map(m=>({...m,image:productImage(m)})).filter(m=>(!category||m.category===category)&&m.name.toLowerCase().includes(search.toLowerCase()));
  const categories=[...new Set((menu.data||[]).map(m=>m.category).filter(Boolean))];
  useEffect(()=>{
   if(sheet&&!dialog.current?.open){dialog.current?.showModal()}else if(!sheet&&dialog.current?.open){dialog.current.close()}
@@ -71,11 +72,11 @@ export default function WaiterOrderComposer({bill,billId,user,tables,menu,draft,
   {!billId&&(!selectedTable||choosingTable)&&<section className="table-selection" aria-label="Choose a table"><div className="menu-section-heading"><h2>Select a table</h2><span>Tap a number to start</span></div><div className="table-picker">{tables.data?.filter(t=>t.is_active).map(t=><button type="button" key={t.id} disabled={frozen||(t.occupied&&!t.mine)} aria-pressed={Number(draft.table_id)===t.id} className={'table-target '+(Number(draft.table_id)===t.id?'selected':'')} onClick={()=>{if(t.mine){navigate('/waiter/bills?bill='+t.order_id)}else{update({table_id:t.id});setChoosingTable(false)}}}><strong>Table {t.number}</strong><span>{t.mine?'Your bill - Open':t.occupied?'Occupied · '+t.owner:'Available'}</span></button>)}</div>{tables.data?.length===0&&<p>No tables configured. Ask your manager to add tables.</p>}</section>}
   <div className="waiter-compose">
    <section className="waiter-menu" aria-label="Food menu">
-    <div className="menu-section-heading"><div><small>FRESH FROM THE KITCHEN</small><h2>Find the best food</h2></div><span>{visible.length} items</span></div>
+    <div className="menu-section-heading"><div><h2>Menu</h2></div><span>{visible.length} items</span></div>
     <label className="waiter-search"><Search size={22}/><input type="search" aria-label="Search menu" placeholder="Search food or drinks…" value={search} onChange={e=>setSearch(e.target.value)}/></label>
     <div className="menu-categories" role="group" aria-label="Menu categories">{['',...categories].map(c=><button key={c} type="button" aria-pressed={category===c} onClick={()=>setCategory(c)}>{c||'All items'}</button>)}</div>
     <LiveState query={menu}/>
-    <div className="menu-grid">{visible.map(m=>{const quantity=draft.items.find(i=>i.menu_item_id===m.id)?.quantity||0;return <article className={'menu-tile '+(quantity?'has-items':'')} key={m.id}><div className="food-photo-wrap">{m.image?<FoodPhoto className="menu-food-photo" src={m.image} alt={m.name}/>:<div className="food-photo-placeholder"><UtensilsCrossed size={36}/></div>}{quantity>0&&<span className="menu-selected"><Check size={14}/> {quantity} in cart</span>}</div><div className="food-card-title"><h3>{m.name}</h3><p className="menu-price">{money(m.price)}</p></div><p className="food-description">{m.description||m.category||'Prepared to order'}</p><small className="food-category-label">{m.category||'Menu'}</small>{quantity?quantityControls(m,quantity):<div className="menu-add-row"><output className="sr-only" aria-label={m.name+' quantity'}>0</output><button className="btn menu-add" type="button" disabled={frozen} aria-label={'Add one '+m.name} onClick={()=>change(m.id,1)}><Plus size={18}/> Add</button></div>}</article>})}</div>
+    <div className="menu-grid">{visible.map(m=>{const quantity=draft.items.find(i=>i.menu_item_id===m.id)?.quantity||0;return <article className={'menu-tile '+(quantity?'has-items':'')} key={m.id}><div className="food-photo-wrap">{m.image?<FoodPhoto className="menu-food-photo" src={m.image} alt={m.name}/>:<div className="food-photo-placeholder"><UtensilsCrossed size={36}/></div>}{quantity>0&&<span className="menu-selected"><Check size={14}/> {quantity} in cart</span>}</div><div className="food-card-title"><h3>{m.name}</h3><p className="menu-price">{money(m.price)}</p></div>{quantity?quantityControls(m,quantity):<div className="menu-add-row"><output className="sr-only" aria-label={m.name+' quantity'}>0</output><button className="btn menu-add" type="button" disabled={frozen} aria-label={'Add one '+m.name} onClick={()=>change(m.id,1)}><Plus size={18}/> Add</button></div>}</article>})}</div>
     {menu.data&&!visible.length&&<div className="menu-empty"><h3>{menu.data.length?'No matching items':'No available menu items'}</h3><p>{menu.data.length?'Try another name or category.':'Ask your manager to update the menu.'}</p>{menu.data.length>0&&<button className="btn" type="button" onClick={()=>{setSearch('');setCategory('')}}>Clear filters</button>}</div>}
    </section>
    <aside className="order-cart" aria-label="Current order">{sheet!=='cart'&&cartContents()}</aside>

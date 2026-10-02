@@ -135,6 +135,72 @@
     ]
   },
   {
+    "checkout": true,
+    "width": 1366,
+    "loaded": true,
+    "horizontalOverflow": false,
+    "panelOverflow": false,
+    "queueHidden": false
+  },
+  {
+    "checkout": true,
+    "width": 820,
+    "loaded": true,
+    "horizontalOverflow": false,
+    "panelOverflow": false,
+    "queueHidden": false
+  },
+  {
+    "checkout": true,
+    "width": 390,
+    "loaded": true,
+    "horizontalOverflow": false,
+    "panelOverflow": false,
+    "queueHidden": true
+  },
+  {
+    "page": "/cashier/payment-ledger",
+    "width": 1366,
+    "receipt": true,
+    "overflow": false,
+    "panelOverflow": false
+  },
+  {
+    "page": "/cashier/receipts",
+    "width": 1366,
+    "receipt": true,
+    "overflow": false,
+    "panelOverflow": false
+  },
+  {
+    "page": "/cashier/payment-ledger",
+    "width": 820,
+    "receipt": true,
+    "overflow": false,
+    "panelOverflow": false
+  },
+  {
+    "page": "/cashier/receipts",
+    "width": 820,
+    "receipt": true,
+    "overflow": false,
+    "panelOverflow": false
+  },
+  {
+    "page": "/cashier/payment-ledger",
+    "width": 390,
+    "receipt": true,
+    "overflow": false,
+    "panelOverflow": false
+  },
+  {
+    "page": "/cashier/receipts",
+    "width": 390,
+    "receipt": true,
+    "overflow": false,
+    "panelOverflow": false
+  },
+  {
     "path": "/",
     "width": 1366,
     "horizontalOverflow": false,

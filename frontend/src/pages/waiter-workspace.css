@@ -1,0 +1,40 @@
+/* Minimal service workspace: restrained surfaces and generous touch targets. */
+.app .waiter-workspace{max-width:1440px;margin-inline:auto}
+.app .waiter-workspace .waiter-heading{align-items:center;margin-bottom:20px}
+.app .waiter-workspace .waiter-heading h1{font-size:26px;letter-spacing:-.6px}
+.app .waiter-workspace .waiter-heading p{color:#52665b;font-size:14px}
+.app .waiter-workspace .order-context{border-radius:12px;box-shadow:none;padding:14px 18px}
+.app .waiter-workspace .menu-section-heading h2{font-size:20px;margin:0}
+.app .waiter-workspace .waiter-search{border-radius:10px;margin:16px 0 12px}
+.app .waiter-workspace .menu-categories{gap:8px;margin-bottom:20px}
+.app .waiter-workspace .menu-categories button{border-radius:8px;min-height:44px;padding:8px 14px}
+.app .waiter-workspace .waiter-compose{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.app .waiter-workspace .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.app .waiter-workspace .menu-tile{padding:12px;border:1px solid #dce6de;border-radius:12px;background:#fff;box-shadow:none;overflow:hidden}
+.app .waiter-workspace .menu-tile.has-items{border-color:#247858;background:#f8fcf9}
+.app .waiter-workspace .food-photo-wrap{height:150px;border-radius:8px;background:#f5f6f5;overflow:hidden}
+.app .waiter-workspace .menu-food-photo{width:100%;height:100%;object-fit:contain;display:block}
+.app .waiter-workspace .food-card-title{margin:12px 0 14px}
+.app .waiter-workspace .food-card-title h3{font-size:16px;line-height:1.4;margin:0 0 6px;color:#203c2e}
+.app .waiter-workspace .food-card-title .menu-price{font-size:15px;margin:0;color:#246b4d}
+.app .waiter-workspace .order-cart{border-radius:12px;padding:18px;max-height:calc(100dvh - 40px);overflow-y:auto;box-shadow:none}
+.app .waiter-workspace .cart-help{color:#52665b}
+.app .waiter-workspace .cart-totals{border-top-style:solid}
+.app .waiter-workspace .bill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin:20px 0}
+.app .waiter-workspace .bill-card{padding:20px;border:1px solid #dce6de;border-radius:12px;box-shadow:none;background:#fff}
+.app .waiter-workspace .bill-card ul{padding:0;list-style:none;border-block:1px solid #edf1ed;margin:16px 0}
+.app .waiter-workspace .bill-card li{padding:10px 0;display:flex;align-items:center;gap:12px}
+.app .waiter-workspace .bill-item-photo{width:40px;height:40px;object-fit:contain;border-radius:6px;background:#f5f6f5;flex-shrink:0}
+.app .waiter-workspace .live-actions{gap:12px;flex-wrap:wrap;align-items:end}
+.app .waiter-workspace .live-actions .field{flex:1;min-width:min(100%,200px)}
+.app .waiter-workspace :is(button,a,input,textarea):focus-visible{outline:3px solid #83b79a;outline-offset:3px}
+@media(max-width:1100px){.app .waiter-workspace .waiter-compose{grid-template-columns:minmax(0,1fr) 280px;gap:16px}}
+@media(max-width:1000px){.app .waiter-workspace .waiter-compose{grid-template-columns:1fr}.app .waiter-workspace .order-cart{display:none}}
+@media(max-width:760px){
+ .app .waiter-workspace .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .app .waiter-workspace .menu-tile{padding:10px}
+ .app .waiter-workspace .food-photo-wrap{height:120px}
+ .app .waiter-workspace .order-context{padding:12px;gap:12px}
+ .app .waiter-workspace .waiter-heading h1{font-size:23px}
+ .app .waiter-workspace .bill-card{padding:16px}
+}

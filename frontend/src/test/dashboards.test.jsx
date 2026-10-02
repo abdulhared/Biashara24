@@ -17,6 +17,8 @@ beforeEach(()=>{
  if(path==='/api/dashboard')return response(dashboard);
  if(path==='/api/dashboard/trends')return response({points:[]});
  if(path==='/api/tables')return response([{id:1,number:1,is_active:true,occupied:false}]);
+ if(path==='/api/cashier/shifts')return response([]);
+ if(path==='/api/orders/1')return response(orders[0]);
  if(path==='/api/orders/2')return response(orders.find(o=>o.id===2));
  if(path==='/api/menu')return response([{id:1,name:'Tea',price:160}]);
  if(path==='/api/orders'&&init.method==='POST'){const body=JSON.parse(init.body);const o={...orders[0],id:2,order_number:'B-LIVE-2',items:body.items.map(i=>({...i,name:'Tea'}))};orders.push(o);return response(o,201)}
@@ -84,13 +86,70 @@ describe('live workspaces',()=>{
  expect(call[1].headers['Idempotency-Key']).toBeTruthy();
  expect(localStorage.getItem('b360_waiter_drafts:1:new')).toBeNull();
  });
+ it('calculates cash change and submits the reviewed bill version',async()=>{
+ open('/cashier/checkout');fireEvent.click(await screen.findByRole('button',{name:/Table 1.*KES 320/}));
+ await waitFor(()=>expect(screen.getByRole('button',{name:'Record cash payment'})).toBeEnabled());
+ fireEvent.click(screen.getByRole('button',{name:'KES 500'}));
+ expect(screen.getByText('Change to return').parentElement).toHaveTextContent('KES 180');
+ fireEvent.click(screen.getByRole('button',{name:'Record cash payment'}));
+ await screen.findByText('Payment recorded');
+ const call=fetchMock.mock.calls.find(([url])=>url.endsWith('/api/orders/1/clear'));
+ expect(JSON.parse(call[1].body)).toMatchObject({amount:320,expected_version:1,method:'cash',tendered_amount:500});
+ expect(fetchMock.mock.calls.some(([url])=>url.includes('/api/orders?active=true&sort=oldest'))).toBe(true);
+ });
+ it('requires another review when the selected bill changes',async()=>{
+ open('/cashier/checkout');fireEvent.click(await screen.findByRole('button',{name:/Table 1.*KES 320/}));
+ await waitFor(()=>expect(screen.getByRole('button',{name:'Record cash payment'})).toBeEnabled());
+ orders[0]={...orders[0],version:2,total:400,items:[{id:1,name:'Tea',quantity:2,subtotal:400}]};
+ fireEvent(window,new Event('focus'));
+ const review=await screen.findByRole('button',{name:'I reviewed the updated bill'});
+ expect(screen.getByRole('button',{name:'Record cash payment'})).toBeDisabled();
+ fireEvent.click(review);fireEvent.click(screen.getByRole('button',{name:'Record cash payment'}));
+ await screen.findByText('Payment recorded');
+ const call=fetchMock.mock.calls.find(([url])=>url.endsWith('/api/orders/1/clear'));
+ expect(JSON.parse(call[1].body)).toMatchObject({amount:400,expected_version:2,tendered_amount:400});
+ });
+ it('retries an uncertain payment with the original idempotency key and tender',async()=>{
+ const original=fetchMock.getMockImplementation();let failed=false;
+ fetchMock.mockImplementation((url,opts)=>{if(url.endsWith('/api/orders/1/clear')&&!failed){failed=true;return Promise.reject(new TypeError('Connection lost'))}return original(url,opts)});
+ open('/cashier/checkout');fireEvent.click(await screen.findByRole('button',{name:/Table 1.*KES 320/}));
+ await waitFor(()=>expect(screen.getByRole('button',{name:'Record cash payment'})).toBeEnabled());
+ fireEvent.click(screen.getByRole('button',{name:'KES 500'}));fireEvent.click(screen.getByRole('button',{name:'Record cash payment'}));
+ fireEvent.click(await screen.findByRole('button',{name:'Retry payment'}));
+ await screen.findByText('Payment recorded');
+ const calls=fetchMock.mock.calls.filter(([url])=>url.endsWith('/api/orders/1/clear'));
+ expect(calls).toHaveLength(2);expect(calls[0][1].body).toBe(calls[1][1].body);
+ expect(calls[0][1].headers['Idempotency-Key']).toBeTruthy();expect(calls[0][1].headers['Idempotency-Key']).toBe(calls[1][1].headers['Idempotency-Key']);
+ });
  it('records cashless payment then confirms the external receipt',async()=>{
- const view=open('/cashier/checkout');await screen.findByText('B-LIVE-1',{selector:'td'});
- fireEvent.click(screen.getByRole('button',{name:'Record payment'}));fireEvent.change(screen.getByLabelText('Payment method'),{target:{value:'m-pesa'}});fireEvent.change(screen.getByLabelText('Payment reference'),{target:{value:'REF123'}});fireEvent.click(screen.getByRole('button',{name:'Record received payment'}));
- expect(await screen.findByText('PENDING MANUAL CONFIRMATION')).toBeInTheDocument();
+ const view=open('/cashier/checkout');await screen.findByRole('button',{name:/Table 1.*KES 320/});
+ fireEvent.click(screen.getByRole('button',{name:/Table 1.*KES 320/}));await screen.findByRole('button',{name:'Cash'});await waitFor(()=>expect(screen.getByRole('button',{name:'M-Pesa'})).toBeEnabled());fireEvent.click(screen.getByRole('button',{name:'M-Pesa'}));fireEvent.change(screen.getByLabelText('Payment reference'),{target:{value:'REF123'}});fireEvent.click(screen.getByRole('button',{name:'Record cashless payment'}));
+ expect(await screen.findByRole('button',{name:'Print pending record'})).toBeInTheDocument();
  expect(fetchMock).toHaveBeenCalledWith(expect.stringContaining('/api/orders/1/clear'),expect.objectContaining({method:'POST'}));
- view.unmount();open('/cashier/payment-ledger');fireEvent.click(await screen.findByRole('button',{name:'Confirm external receipt'}));await waitFor(()=>expect(screen.queryByRole('button',{name:'Confirm external receipt'})).not.toBeInTheDocument());
+ view.unmount();open('/cashier/payment-ledger');fireEvent.click(await screen.findByRole('button',{name:/B-LIVE-1.*KES 320/}));
+ expect(screen.getByRole('button',{name:'Confirm external receipt'})).toBeDisabled();
+ fireEvent.click(screen.getByRole('checkbox',{name:'I checked the reference and amount.'}));
+ fireEvent.click(screen.getByRole('button',{name:'Confirm external receipt'}));await waitFor(()=>expect(screen.queryByRole('button',{name:'Confirm external receipt'})).not.toBeInTheDocument());
  expect(fetchMock).toHaveBeenCalledWith(expect.stringContaining('/api/payments/5/verify'),expect.objectContaining({method:'PUT'}));
+ });
+ it('renders saved receipt details and sends date filters to the server',async()=>{
+ payments=[{id:8,order_id:1,order_number:'B-LIVE-1',receipt:'RCP-000008',amount:320,method:'cash',status:'completed',tendered_amount:500,change_amount:180,snapshot:{business:{business_name:'Saved Restaurant',address:'Nairobi'},items:[{id:1,name:'Original tea',quantity:2,subtotal:320}],tax_summary:{net_amount:275.86,tax_amount:44.14}}}];
+ open('/cashier/receipts');fireEvent.click(await screen.findByRole('button',{name:/RCP-000008.*KES 320/}));
+ const preview=within(screen.getByRole('region',{name:'Receipt preview'}));
+ expect(preview.getByText('Saved Restaurant')).toBeInTheDocument();expect(preview.getByText('2 × Original tea')).toBeInTheDocument();
+ expect(preview.getByText('Change returned').parentElement).toHaveTextContent('KES 180');expect(preview.getByText('VAT (16%, included)')).toBeInTheDocument();
+ const print=vi.spyOn(window,'print').mockImplementation(()=>{});fireEvent.click(preview.getByRole('button',{name:'Print receipt'}));expect(print).toHaveBeenCalledOnce();print.mockRestore();
+ expect(fetchMock.mock.calls.some(([url])=>new URL(url).pathname==='/api/orders/1')).toBe(false);
+ fireEvent.change(screen.getByLabelText('From date'),{target:{value:'2026-09-01'}});fireEvent.change(screen.getByLabelText('To date'),{target:{value:'2026-09-30'}});
+ await waitFor(()=>expect(fetchMock.mock.calls.some(([url])=>url.includes('from_date=2026-09-01')&&url.includes('to_date=2026-09-30')&&url.includes('status_filter=completed'))).toBe(true));
+ });
+ it('searches receipts on the current page and explains missing historical item details',async()=>{
+ payments=[{id:8,order_id:1,order_number:'B-LIVE-1',receipt:'RCP-000008',amount:320,method:'cash',status:'completed'}];
+ open('/cashier/receipts');fireEvent.click(await screen.findByRole('button',{name:/RCP-000008.*KES 320/}));
+ expect(within(screen.getByRole('region',{name:'Receipt preview'})).getByText('Saved item details are unavailable for this older payment.')).toBeInTheDocument();
+ fireEvent.change(screen.getByLabelText('Search this page'),{target:{value:'missing-reference'}});
+ expect(screen.getByRole('heading',{name:'No matching receipts'})).toBeInTheDocument();
+ fireEvent.click(screen.getByRole('button',{name:'Reset filters'}));expect(screen.getByRole('button',{name:/RCP-000008.*KES 320/})).toBeInTheDocument();
  });
  it('shows an API error rather than invented dashboard figures',async()=>{fetchMock.mockResolvedValue(response({detail:'Server error'},500));open('/director/overview');expect(await screen.findByRole('alert')).toHaveTextContent('Server error');expect(screen.queryByText('KES 1,734')).not.toBeInTheDocument()});
  it('handles unknown paths',()=>{open('/missing/page');expect(screen.getByRole('heading',{name:'Page not found'})).toBeInTheDocument()});

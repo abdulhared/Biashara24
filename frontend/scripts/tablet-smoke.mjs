@@ -43,7 +43,8 @@ try{
  else if(path.startsWith('/api/reports/'))data={start:'2026-09-28',end:'2026-09-28',totals:{restaurant:0,carwash:0,combined:0},days:[],top_items:[],stock:{low_items:[]}};
  else if(path==='/api/carwash/history')data={transactions:[],total:0};
  else if(path==='/api/carwash/today')data={transactions:[],summary:{total_washes:0,cash_total:0,mpesa_total:0,total_revenue:0}};
- else if(path==='/api/payments/daily-summary')data={cash_total:0,mpesa_total:0,total_revenue:0,orders_cleared:0};
+ else if(path==='/api/payments/daily-summary')data={cash_total:450,mpesa_total:900,total_revenue:1350,orders_cleared:3};
+ else if(path==='/api/payments'){const params=new URL(url,location.origin).searchParams;data=['completed','pending','rejected'].map((status,i)=>({id:i+1,order_id:1,order_number:'B-2026-00'+(i+1),table_number:i+1,amount:450,method:i?'m-pesa':'cash',status,reference:i?'QKA82J91'+i:null,receipt:i?null:'RCP-000001',created_at:new Date().toISOString(),completed_at:i?null:new Date().toISOString(),tendered_amount:i?null:500,change_amount:i?null:50,rejection_reason:i===2?'Reference does not match the business account.':null,snapshot:{...bill,business:{business_name:'Biashara360 Restaurant',address:'Main Branch, Nairobi',phone:'0712 000 000'},tax_summary:{net_amount:387.93,tax_amount:62.07,gross_amount:450}}})).filter(p=>(!params.get('status_filter')||p.status===params.get('status_filter'))&&(!params.get('method')||p.method===params.get('method')))}
  else if(path==='/health')data={status:'ok'};
  else if(path==='/api/settings')data={version:1,business_name:'Biashara360',address:'Nairobi',phone:'',require_cashier_shift:false};
  else if(path==='/api/kitchen/lines')data=[{id:1,order_item_id:1,order_number:'B-2026-001',name:'Chicken pilau',quantity:2,department:'Kitchen',status:'pending',version:1,recipe_configured:true}];
@@ -144,6 +145,37 @@ try{
  for(let i=0;i<100;i++){if(await evaluate("document.body.textContent.includes('Customer requested one portion')"))break;await sleep(100)}
  if(!await evaluate("document.body.textContent.includes('Resulting total: KES 250')"))throw new Error('Manager review did not render');
  const shot=await send('Page.captureScreenshot',{format:'png'});writeFileSync('artifacts/bill-review.png',Buffer.from(shot.data,'base64'));
+ for(const width of [1366,820,390]){
+ await send('Emulation.setDeviceMetricsOverride',{width,height:width===390?844:900,deviceScaleFactor:1,mobile:false});
+ await send('Page.navigate',{url:'http://127.0.0.1:5178/cashier/checkout'});
+ for(let i=0;i<100;i++){if(await evaluate("!!document.querySelector('.cashier-bill')"))break;await sleep(100)}
+ await evaluate("document.querySelector('.cashier-bill').click()");
+ for(let i=0;i<100;i++){if(await evaluate("!!document.querySelector('.cashier-items')"))break;await sleep(100)}
+ const checkout=await evaluate("({checkout:true,width:innerWidth,loaded:!!document.querySelector('.cashier-items'),horizontalOverflow:document.documentElement.scrollWidth>innerWidth,panelOverflow:[...document.querySelectorAll('.cashier-detail,.cashier-payment,.cashier-workbench')].some(p=>p.scrollWidth>p.clientWidth+1),queueHidden:getComputedStyle(document.querySelector('.cashier-queue')).display==='none'})");
+ if(!checkout.loaded||checkout.horizontalOverflow||checkout.panelOverflow||checkout.queueHidden!==(width<=760))throw new Error('Selected checkout: '+JSON.stringify(checkout));
+ const capture=await send('Page.captureScreenshot',{format:'png'});writeFileSync('artifacts/cashier-checkout-selected-'+width+'.png',Buffer.from(capture.data,'base64'));
+ await evaluate("[...document.querySelectorAll('button')].find(b=>b.textContent==='Back to bills').click()");await sleep(100);
+ if(!await evaluate("getComputedStyle(document.querySelector('.cashier-queue')).display!=='none'"))throw new Error('Checkout bill queue did not reopen');
+ results.push(checkout);
+ }
+ for(const width of [1366,820,390]){for(const page of ['payment-ledger','receipts']){
+ await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
+ await send('Page.navigate',{url:'http://127.0.0.1:5178/cashier/'+page});
+ for(let i=0;i<100;i++){if(await evaluate("!!document.querySelector('.payment-row')"))break;await sleep(100)}
+ await evaluate("document.querySelector('.payment-row').click()");await sleep(150);
+ const checks=await evaluate("({page:location.pathname,width:innerWidth,receipt:!!document.querySelector('.payment-inspector .receipt-paper'),overflow:document.documentElement.scrollWidth>innerWidth,panelOverflow:[...document.querySelectorAll('.payment-list,.payment-inspector')].some(p=>p.scrollWidth>p.clientWidth+1)})");
+ if(!checks.receipt||checks.overflow||checks.panelOverflow)throw new Error('Payment layout: '+JSON.stringify(checks));
+ if(width<1100)await evaluate("document.querySelector('.payment-inspector').scrollIntoView()");
+ const capture=await send('Page.captureScreenshot',{format:'png'});writeFileSync('artifacts/cashier-'+page+'-'+width+'.png',Buffer.from(capture.data,'base64'));
+ if(page==='receipts'&&width===1366){
+ await send('Emulation.setEmulatedMedia',{media:'print'});
+ const print=await evaluate("({root:getComputedStyle(document.querySelector('#root')).display,paper:getComputedStyle(document.querySelector('.receipt-print-root')).display,header:getComputedStyle(document.querySelector('.receipt-print-root header')).display,text:document.querySelector('.receipt-print-root').innerText})");
+ if(print.root!=='none'||print.paper==='none'||print.header==='none'||!print.text.includes('Biashara360 Restaurant')||!print.text.includes('Change returned'))throw new Error('Receipt print: '+JSON.stringify(print));
+ const pdf=await send('Page.printToPDF',{printBackground:true});writeFileSync('artifacts/cashier-receipt-print.pdf',Buffer.from(pdf.data,'base64'));
+ await send('Emulation.setEmulatedMedia',{media:''});
+ }
+ results.push(checks);
+ }}
  const densityRoutes=['/','/login','/login/manager','/director/overview','/director/reports','/director/management','/director/departments','/manager/menu','/manager/tables','/manager/bill-changes','/manager/printers','/manager/order-pipeline','/cashier/checkout','/cashier/payment-ledger','/store_manager/store-overview','/store_manager/stock-history','/carwash_manager/wash-overview','/carwash_manager/service-types','/waiter/bills','/waiter/history'];
  for(const [role,value] of Object.entries(roles)){for(const id of [...value.nav.map(n=>n[0]),...(value.extraPages||[])]){const route='/'+role+'/'+id;if(!densityRoutes.includes(route))densityRoutes.push(route)}}
  for(const width of [1366,390]){

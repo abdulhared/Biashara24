@@ -22,6 +22,13 @@ beforeEach(()=>{
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.useRealTimers()});
 const open=path=>render(<MemoryRouter initialEntries={[path]}><App/></MemoryRouter>);
 
+it('shows a supplied product photo on the menu and in the order cart',async()=>{
+ open('/waiter/new-order');
+ expect(await screen.findByRole('img',{name:'Tea'})).toHaveAttribute('src',expect.stringContaining('031852.png'));
+ fireEvent.click(screen.getByRole('button',{name:'Add one Tea'}));
+ expect(document.querySelector('.cart-food-photo')).toHaveAttribute('src',expect.stringContaining('031852.png'));
+});
+
 it('keeps an unconfigured restaurant on the live workflow instead of simulating orders',async()=>{
  const original=mock.getMockImplementation();
  mock.mockImplementation((url,opts)=>['/api/menu','/api/tables'].includes(new URL(url).pathname)?Promise.resolve(response([])):original(url,opts));

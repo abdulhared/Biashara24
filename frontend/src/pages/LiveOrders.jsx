@@ -1,3 +1,4 @@
+import Receipt from './PaymentReceipt';
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {http,request} from '../services/http';
@@ -40,7 +41,7 @@ export function Orders({title='Orders',checkout=false,pendingOnly=false}){
  {checkout&&!selected&&<Panel title="Payment"><div className="preview-empty"><h3>Select a bill</h3><p>Choose Record payment to review items, included VAT and payment details.</p></div></Panel>}
  </div>{receipt&&<Receipt receipt={receipt}/>}</>;
 }
-export function Receipt({receipt}){return <Panel title="Receipt"><div id="receipt-preview" className="live-receipt"><h2>Biashara360</h2><p>{receipt.receipt} · {receipt.order_number}</p><p>{receipt.status==='completed'?'PAID':'PENDING MANUAL CONFIRMATION'}</p>{receipt.items?.map(i=><p key={i.id}>{i.quantity} × {i.name} — {money(i.subtotal)}</p>)}<TaxSummary summary={receipt.tax_summary}/><p>Total: {money(receipt.amount)}</p><p>Method: {receipt.method} · Reference: {receipt.reference||'—'}</p></div><button className="btn" onClick={()=>window.print()}>Print receipt</button></Panel>}
+export {default as Receipt} from './PaymentReceipt';
 export function Payments({page='payments'}){
  const {user}=useAuth(),[rejecting,setRejecting]=useState(null),[reason,setReason]=useState('');
  const title=({receipts:'Receipts',mpesa:'M-Pesa confirmations','cash-payment':'Cash payments','shift-summary':'Shift Summary'})[page]||'Payments';

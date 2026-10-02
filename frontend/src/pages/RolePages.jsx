@@ -1,4 +1,6 @@
 import {Orders,Payments} from './LiveOrders';
+import CashierCheckout from './CashierCheckout';
+import CashierPayments from './CashierPayments';
 import {Inventory,Carwash} from './LiveStockWash';
 import {Overview,Reports} from './LiveReports';
 import {Configuration} from './LiveConfiguration';
@@ -31,7 +33,8 @@ export default function RolePage({id}){
  if(id==='overview')return <Overview/>;
  if(id==='manager-dashboard')return <ManagerDashboard/>;
  if(['orders','order-pipeline','kitchen'].includes(id))return <Orders title={id==='kitchen'?'Kitchen Operations':'Orders'}/>;
- if(['checkout','pending-bills'].includes(id))return <Orders title="Cashier Station" checkout pendingOnly/>;
+ if(['checkout','pending-bills'].includes(id))return <CashierCheckout/>;
+ if(user.role==='cashier'&&['payments','payment-ledger','cash-payment','mpesa','receipts'].includes(id))return <CashierPayments key={id} page={id}/>;
  if(['payments','manager-payments','payment-ledger','cash-payment','mpesa','receipts','shift-summary'].includes(id))return <Payments page={id}/>;
  if(['inventory','store-overview','ingredients','receive-stock','adjustments','low-stock','stock-counts','inventory-reports','stock-history'].includes(id))return <Inventory page={id} historyOnly={id==='stock-history'}/>;
  if(['car-wash','wash-overview','new-wash','wash-payments','cashier-carwash','wash-history','pending-wash-payments','wash-summary','wash-reports','active-bays'].includes(id))return <Carwash page={id}/>;
